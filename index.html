@@ -3,74 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard do aplicativo Vida Financeira - Controle suas finanças pessoais">
+  <meta name="theme-color" content="#4CAF50">
   <title>Dashboard - Vida Financeira</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="light-theme">
-  <header>
+  <header class="shadow-sm sticky-top bg-body">
     <div class="container">
-      <div class="header-content">
-        <h1>Vida Financeira</h1>
-        <button id="theme-toggle" class="theme-btn">🌙 Modo Escuro</button>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active">📊 Dashboard</a></li>
-          <li><a href="lancamentos.html">💸 Lançamentos</a></li>
-          <li><a href="quitacoes.html">✅ Quitações</a></li>
-          <li><a href="usuarios.html">👥 Usuários</a></li>
-          <li><a href="cartoes.html">💳 Cartões</a></li>
-          <li><a href="bancos-bandeiras.html">🏦 Bancos</a></li>
-        </ul>
+      <nav class="navbar navbar-expand-lg py-3">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold fs-4" href="index.html">
+            <i class="fas fa-wallet me-2 text-primary"></i>Vida Financeira
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">
+                  <i class="fas fa-chart-pie me-1"></i> Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="lancamentos.html">
+                  <i class="fas fa-exchange-alt me-1"></i> Lançamentos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="quitacoes.html">
+                  <i class="fas fa-check-circle me-1"></i> Quitações
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="usuarios.html">
+                  <i class="fas fa-users me-1"></i> Usuários
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cartoes.html">
+                  <i class="fas fa-credit-card me-1"></i> Cartões
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="bancos-bandeiras.html">
+                  <i class="fas fa-university me-1"></i> Bancos
+                </a>
+              </li>
+            </ul>
+            <button id="theme-toggle" class="btn btn-outline-secondary">
+              <i class="fas fa-moon me-1"></i> Modo Escuro
+            </button>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h2>Dashboard Financeiro</h2>
-    
-    <div class="dashboard">
-      <div class="dashboard-card receitas-card">
-        <div class="card-icon">📈</div>
-        <h3 id="total-receitas">R$ 0,00</h3>
-        <p>Total de Receitas</p>
-      </div>
+  <main class="container py-4">
+    <section class="mb-4">
+      <h1 class="h2 mb-4 border-start border-4 border-primary ps-3">Dashboard Financeiro</h1>
       
-      <div class="dashboard-card despesas-card">
-        <div class="card-icon">📉</div>
-        <h3 id="total-despesas">R$ 0,00</h3>
-        <p>Total de Despesas</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm receitas-card">
+            <div class="card-body p-4 text-center">
+              <div class="rounded-circle bg-success bg-opacity-10 p-3 d-inline-block mb-3">
+                <i class="fas fa-arrow-up text-success fs-3"></i>
+              </div>
+              <h3 id="total-receitas" class="display-6 fw-bold mb-1">R$ 0,00</h3>
+              <p class="text-muted mb-0">Total de Receitas</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm despesas-card">
+            <div class="card-body p-4 text-center">
+              <div class="rounded-circle bg-danger bg-opacity-10 p-3 d-inline-block mb-3">
+                <i class="fas fa-arrow-down text-danger fs-3"></i>
+              </div>
+              <h3 id="total-despesas" class="display-6 fw-bold mb-1">R$ 0,00</h3>
+              <p class="text-muted mb-0">Total de Despesas</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm saldo-card">
+            <div class="card-body p-4 text-center">
+              <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-block mb-3">
+                <i class="fas fa-wallet text-primary fs-3"></i>
+              </div>
+              <h3 id="saldo" class="display-6 fw-bold mb-1">R$ 0,00</h3>
+              <p class="text-muted mb-0">Saldo Atual</p>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <div class="dashboard-card saldo-card">
-        <div class="card-icon">💰</div>
-        <h3 id="saldo">R$ 0,00</h3>
-        <p>Saldo Atual</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">📋 Lançamentos Recentes</h3>
+    <section>
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white py-3 border-0">
+          <h2 class="h5 mb-0">
+            <i class="fas fa-list-ul me-2 text-primary"></i>
+            Lançamentos Recentes
+          </h2>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Descrição</th>
+                  <th>Valor</th>
+                  <th>Tipo</th>
+                  <th>Data</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-lancamentos-recentes">
+                <!-- Preenchido via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Valor</th>
-              <th>Tipo</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody id="tabela-lancamentos-recentes">
-            <!-- Preenchido via JavaScript -->
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </section>
   </main>
 
+  <footer class="bg-light py-4 mt-5 border-top">
+    <div class="container text-center">
+      <p class="text-muted mb-0">&copy; 2023 Vida Financeira - Controle suas finanças com facilidade</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="js/firebase-config.js"></script>
   <script type="module" src="js/dashboard.js"></script>
   
@@ -99,9 +175,11 @@
       
       function updateThemeButton(theme) {
         if (theme === 'dark-theme') {
-          themeToggle.innerHTML = '☀️ Modo Claro';
+          themeToggle.innerHTML = '<i class="fas fa-sun me-1"></i> Modo Claro';
+          themeToggle.classList.replace('btn-outline-secondary', 'btn-outline-light');
         } else {
-          themeToggle.innerHTML = '🌙 Modo Escuro';
+          themeToggle.innerHTML = '<i class="fas fa-moon me-1"></i> Modo Escuro';
+          themeToggle.classList.replace('btn-outline-light', 'btn-outline-secondary');
         }
       }
     });

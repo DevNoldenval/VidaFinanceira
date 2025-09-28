@@ -3,184 +3,273 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gerenciamento de cartões no aplicativo Vida Financeira">
+  <meta name="theme-color" content="#4CAF50">
   <title>Cartões - Vida Financeira</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="light-theme">
-<header>
+  <header class="shadow-sm sticky-top bg-body">
     <div class="container">
-      <div class="header-content">
-        <h1>Vida Financeira</h1>
-        <button id="theme-toggle" class="theme-btn">🌙 Modo Escuro</button>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">📊 Dashboard</a></li>
-          <li><a href="lancamentos.html">💸 Lançamentos</a></li>
-          <li><a href="quitacoes.html">✅ Quitações</a></li>
-          <li><a href="usuarios.html">👥 Usuários</a></li>
-          <li><a href="cartoes.html"class="active">💳 Cartões</a></li>
-          <li><a href="bancos-bandeiras.html">🏦 Bancos</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main class="container">
-      <h1>Cartões</h1>
-
-      <div class="card">
-        <form id="form-cartao" class="form">
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="nome">Nome do Cartão*</label>
-              <input type="text" id="nome" name="nome" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="tipo">Tipo*</label>
-              <select id="tipo" name="tipo" class="form-control" required>
-                <option value="">Selecione o tipo</option>
-                <option value="debito">Débito</option>
-                <option value="credito">Crédito</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="banco">Banco*</label>
-              <select id="banco" name="banco" class="form-control" required></select>
-            </div>
-
-            <div class="form-group">
-              <label for="bandeira">Bandeira*</label>
-              <select id="bandeira" name="bandeira" class="form-control" required></select>
-            </div>
-
-            <div class="form-group">
-              <label for="limite">Limite (R$)*</label>
-              <input type="number" id="limite" name="limite" class="form-control" step="0.01" required>
-            </div>
-
-            <div class="form-group">
-              <label for="dia_vencimento">Dia de Vencimento*</label>
-              <select id="dia_vencimento" name="dia_vencimento" class="form-control" required>
-                <option value="">Selecione o dia</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="dia_fechamento">Dia do Fechamento*</label>
-              <select id="dia_fechamento" name="dia_fechamento" class="form-control" required>
-                <option value="">Selecione o dia</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="limite_restante">Limite Restante (R$)</label>
-              <input type="number" id="limite_restante" name="limite_restante" class="form-control" readonly>
-            </div>
+      <nav class="navbar navbar-expand-lg py-3">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold fs-4" href="index.html">
+            <i class="fas fa-wallet me-2 text-primary"></i>Vida Financeira
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                  <i class="fas fa-chart-pie me-1"></i> Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="lancamentos.html">
+                  <i class="fas fa-exchange-alt me-1"></i> Lançamentos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="quitacoes.html">
+                  <i class="fas fa-check-circle me-1"></i> Quitações
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="usuarios.html">
+                  <i class="fas fa-users me-1"></i> Usuários
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="cartoes.html">
+                  <i class="fas fa-credit-card me-1"></i> Cartões
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="bancos-bandeiras.html">
+                  <i class="fas fa-university me-1"></i> Bancos
+                </a>
+              </li>
+            </ul>
+            <button id="theme-toggle" class="btn btn-outline-secondary">
+              <i class="fas fa-moon me-1"></i> Modo Escuro
+            </button>
           </div>
-
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Salvar Cartão</button>
-            <button type="button" id="btn-cancelar" class="btn btn-secondary" onclick="cancelarEdicaoCartao()" style="display: none;">Cancelar</button>
-          </div>
-        </form>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Lista de Cartões</h2>
         </div>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Tipo</th>
-                <th>Banco</th>
-                <th>Bandeira</th>
-                <th>Nome</th>
-                <th>Limite</th>
-                <th>Usado</th>
-                <th>Disponível</th>
-                <th>Vencimento</th>
-                <th>Fechamento</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tabela-cartoes">
-            </tbody>
-          </table>
+      </nav>
+    </div>
+  </header>
+
+    <main class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2 mb-0"><i class="fas fa-credit-card me-2 text-primary"></i>Cartões</h1>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+          <h5 class="card-title mb-0">Cadastrar Novo Cartão</h5>
+        </div>
+        <div class="card-body">
+          <form id="form-cartao" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="nome" class="form-label">Nome do Cartão*</label>
+                <input type="text" id="nome" name="nome" class="form-control" required>
+                <div class="invalid-feedback">
+                  Por favor, informe o nome do cartão.
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="tipo" class="form-label">Tipo*</label>
+                <select id="tipo" name="tipo" class="form-select" required>
+                  <option value="">Selecione o tipo</option>
+                  <option value="debito">Débito</option>
+                  <option value="credito">Crédito</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor, selecione o tipo do cartão.
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="banco" class="form-label">Banco*</label>
+                <select id="banco" name="banco" class="form-select" required></select>
+                <div class="invalid-feedback">
+                  Por favor, selecione o banco.
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="bandeira" class="form-label">Bandeira*</label>
+                <select id="bandeira" name="bandeira" class="form-select" required></select>
+                <div class="invalid-feedback">
+                  Por favor, selecione a bandeira.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="limite" class="form-label">Limite (R$)*</label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input type="number" id="limite" name="limite" class="form-control" step="0.01" required>
+                </div>
+                <div class="invalid-feedback">
+                  Por favor, informe o limite do cartão.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="dia_vencimento" class="form-label">Dia de Vencimento*</label>
+                <select id="dia_vencimento" name="dia_vencimento" class="form-select" required>
+                  <option value="">Selecione o dia</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor, selecione o dia de vencimento.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="dia_fechamento" class="form-label">Dia do Fechamento*</label>
+                <select id="dia_fechamento" name="dia_fechamento" class="form-select" required>
+                  <option value="">Selecione o dia</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor, selecione o dia de fechamento.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="limite_restante" class="form-label">Limite Restante (R$)</label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input type="number" id="limite_restante" name="limite_restante" class="form-control" readonly>
+                </div>
+              </div>
+              
+              <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-save me-1"></i> Salvar Cartão
+                </button>
+                <button type="button" id="btn-cancelar" class="btn btn-outline-secondary ms-2" onclick="cancelarEdicaoCartao()" style="display: none;">
+                  <i class="fas fa-times me-1"></i> Cancelar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="card-title mb-0">Lista de Cartões</h5>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover table-striped mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Tipo</th>
+                  <th>Banco</th>
+                  <th>Bandeira</th>
+                  <th>Nome</th>
+                  <th>Limite</th>
+                  <th>Usado</th>
+                  <th>Disponível</th>
+                  <th>Vencimento</th>
+                  <th>Fechamento</th>
+                  <th class="text-center">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-cartoes">
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </main>
-  </div>
 
-  <script type="module" src="js/cartoes.js"></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
+    <footer class="bg-light py-4 mt-auto border-top">
+      <div class="container text-center">
+        <p class="mb-0 text-muted">&copy; 2023 Vida Financeira. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/cartoes.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
     
     // Tema salvo

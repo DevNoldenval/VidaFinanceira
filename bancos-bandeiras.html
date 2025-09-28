@@ -1,104 +1,187 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bancos - Vida Financeira</title>
+  <meta name="description" content="Gerenciamento de bancos e bandeiras no aplicativo Vida Financeira">
+  <meta name="theme-color" content="#4CAF50">
+  <title>Bancos e Bandeiras - Vida Financeira</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="light-theme">
-  <header>
+  <header class="shadow-sm sticky-top bg-body">
     <div class="container">
-      <div class="header-content">
-      <h1>Vida Financeira</h1>
-       <button id="theme-toggle" class="theme-btn">🌙 Modo Escuro</button>
+      <nav class="navbar navbar-expand-lg py-3">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold fs-4" href="index.html">
+            <i class="fas fa-wallet me-2 text-primary"></i>Vida Financeira
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                  <i class="fas fa-chart-pie me-1"></i> Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="lancamentos.html">
+                  <i class="fas fa-exchange-alt me-1"></i> Lançamentos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="quitacoes.html">
+                  <i class="fas fa-check-circle me-1"></i> Quitações
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="usuarios.html">
+                  <i class="fas fa-users me-1"></i> Usuários
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cartoes.html">
+                  <i class="fas fa-credit-card me-1"></i> Cartões
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="bancos-bandeiras.html">
+                  <i class="fas fa-university me-1"></i> Bancos
+                </a>
+              </li>
+            </ul>
+            <button id="theme-toggle" class="btn btn-outline-secondary">
+              <i class="fas fa-moon me-1"></i> Modo Escuro
+            </button>
+          </div>
         </div>
-      <nav>
-        <ul>
-          <li><a href="index.html" >📊 Dashboard</a></li>
-          <li><a href="lancamentos.html">💸 Lançamentos</a></li>
-          <li><a href="quitacoes.html">✅ Quitações</a></li>
-          <li><a href="usuarios.html">👥 Usuários</a></li>
-          <li><a href="cartoes.html">💳 Cartões</a></li>
-          <li><a href="bancos-bandeiras.html"class="active">🏦 Bancos</a></li>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h2>Gerenciamento de Bancos e Bandeiras</h2>
+  <main class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0"><i class="fas fa-university me-2 text-primary"></i>Bancos e Bandeiras</h2>
+    </div>
     
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Adicionar Banco</h3>
-      </div>
-      <form id="form-banco">
-        <div class="form-group">
-          <label for="nome-banco">Nome do Banco</label>
-          <input type="text" id="nome-banco" class="form-control" required>
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-light">
+            <h5 class="card-title mb-0"><i class="fas fa-university me-2"></i>Novo Banco</h5>
+          </div>
+          <div class="card-body">
+            <form id="form-banco" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="nome-banco" class="form-label">Nome do Banco</label>
+                <input type="text" id="nome-banco" class="form-control" required>
+                <div class="invalid-feedback">Por favor, informe o nome do banco.</div>
+              </div>
+              <div class="mb-3">
+                <label for="codigo-banco" class="form-label">Código</label>
+                <input type="text" id="codigo-banco" class="form-control">
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-outline-secondary me-md-2">Limpar</button>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-save me-1"></i>Salvar Banco
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <button type="submit" class="btn">Adicionar Banco</button>
-      </form>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Lista de Bancos</h3>
-      </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Nome do Banco</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="tabela-bancos">
-            <!-- Preenchido via JavaScript -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Adicionar Bandeira</h3>
-      </div>
-      <form id="form-bandeira">
-        <div class="form-group">
-          <label for="nome-bandeira">Nome da Bandeira</label>
-          <input type="text" id="nome-bandeira" class="form-control" required>
+        
+        <div class="card shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="card-title mb-0"><i class="fas fa-list me-2"></i>Lista de Bancos</h5>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover table-striped mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Código</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tabela-bancos">
+                  <!-- Preenchido via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <button type="submit" class="btn">Adicionar Bandeira</button>
-      </form>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Lista de Bandeiras</h3>
       </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Nome da Bandeira</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="tabela-bandeiras">
-            <!-- Preenchido via JavaScript -->
-          </tbody>
-        </table>
+      
+      <div class="col-lg-6">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-light">
+            <h5 class="card-title mb-0"><i class="fas fa-credit-card me-2"></i>Nova Bandeira</h5>
+          </div>
+          <div class="card-body">
+            <form id="form-bandeira" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="nome-bandeira" class="form-label">Nome da Bandeira</label>
+                <input type="text" id="nome-bandeira" class="form-control" required>
+                <div class="invalid-feedback">Por favor, informe o nome da bandeira.</div>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-outline-secondary me-md-2">Limpar</button>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-save me-1"></i>Salvar Bandeira
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="card shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="card-title mb-0"><i class="fas fa-list me-2"></i>Lista de Bandeiras</h5>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover table-striped mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tabela-bandeiras">
+                  <!-- Preenchido via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
 
+  <footer class="bg-light py-4 mt-5 border-top">
+    <div class="container text-center">
+      <p class="mb-0 text-muted">© 2023 Vida Financeira. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="js/firebase-config.js"></script>
   <script type="module" src="js/bancos-bandeiras.js"></script>
   <script>
   document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+    const icon = themeToggle.querySelector('i');
     
     // Tema salvo
     const saved = localStorage.getItem('theme') || 'light-theme';
@@ -118,9 +201,15 @@
     });
     
     function updateBtn(theme) {
-      themeToggle.textContent = theme==='dark-theme' ? '☀️ Modo Claro' : '🌙 Modo Escuro';
+      if (theme === 'dark-theme') {
+        icon.classList.replace('fa-moon', 'fa-sun');
+        themeToggle.innerHTML = '<i class="fas fa-sun me-1"></i> Modo Claro';
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+        themeToggle.innerHTML = '<i class="fas fa-moon me-1"></i> Modo Escuro';
+      }
     }
   });
-</script>
+  </script>
 </body>
 </html>
