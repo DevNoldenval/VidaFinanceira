@@ -29,8 +29,10 @@ async function carregarBancos() {
       const row = tabela.insertRow();
       row.innerHTML = `
         <td>${banco.nome}</td>
+        <td>${banco.agencia}</td>
+        <td>${banco.conta}</td>
         <td>
-          <button class="btn btn-warning" onclick="editarBanco('${doc.id}', '${banco.nome}')">Editar</button>
+          <button class="btn btn-warning" onclick="editarBanco('${doc.id}', '${banco.nome}', '${banco.agencia}', '${banco.conta}')">Editar</button>
           <button class="btn btn-danger" onclick="excluirBanco('${doc.id}')">Excluir</button>
         </td>
       `;
@@ -66,14 +68,20 @@ async function carregarBandeiras() {
 
 async function adicionarBanco() {
   const nome = document.getElementById('nome-banco').value.trim();
+  const agencia = document.getElementById('agencia-banco').value.trim();
+  const conta = document.getElementById('conta-banco').value.trim();
   
-  if (!nome) {
-    alert('Por favor, informe o nome do banco!');
+  if (!nome || !agencia || !conta) {
+    alert('Por favor, preencha todos os campos!');
     return;
   }
   
   try {
-    await addDoc(collection(db, 'bancos'), { nome });
+    await addDoc(collection(db, 'bancos'), { 
+      nome, 
+      agencia, 
+      conta 
+    });
     document.getElementById('form-banco').reset();
     carregarBancos();
   } catch (error) {
@@ -100,12 +108,27 @@ async function adicionarBandeira() {
   }
 }
 
-async function editarBanco(id, nomeAtual) {
+async function editarBanco(id, nomeAtual, agenciaAtual, contaAtual) {
   const novoNome = prompt('Editar nome do banco:', nomeAtual);
+  const novaAgencia = prompt('Editar agência:', agenciaAtual);
+  const novaConta = prompt('Editar conta:', contaAtual);
   
-  if (novoNome && novoNome.trim() !== '') {
+  if (novoNome !== null && novaAgencia !== null && novaConta !== null) {
+    const nomeTrim = novoNome.trim();
+    const agenciaTrim = novaAgencia.trim();
+    const contaTrim = novaConta.trim();
+    
+    if (nomeTrim === '' || agenciaTrim === '' || contaTrim === '') {
+      alert('Todos os campos devem ser preenchidos!');
+      return;
+    }
+    
     try {
-      await updateDoc(doc(db, 'bancos', id), { nome: novoNome.trim() });
+      await updateDoc(doc(db, 'bancos', id), { 
+        nome: nomeTrim, 
+        agencia: agenciaTrim, 
+        conta: contaTrim 
+      });
       carregarBancos();
     } catch (error) {
       console.error("Erro ao editar banco: ", error);
